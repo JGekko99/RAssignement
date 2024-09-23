@@ -5,19 +5,19 @@ library(readr)
 
 # Define a function to read and process each day's data
 process_day_data <- function(filename, day_number) {
-  data <- read_csv(filename)
+  data <- read_csv(filename, show_col_types = FALSE)
   data <- data %>%
     mutate(
       day = day_number,
       # Create age_group variable
       age_group = case_when(
-        age < 20 ~ "<20",
-        age >= 20 & age <= 29 ~ "20-29",
-        age >= 30 & age <= 39 ~ "30-39",
-        age >= 40 & age <= 49 ~ "40-49",
-        age >= 50 & age <= 59 ~ "50-59",
-        age >= 60 & age <= 69 ~ "60-69",
-        age >= 70 ~ "70+",
+        Age < 20 ~ "<20",
+        Age >= 20 & Age <= 29 ~ "20-29",
+        Age >= 30 & Age <= 39 ~ "30-39",
+        Age >= 40 & Age <= 49 ~ "40-49",
+        Age >= 50 & Age <= 59 ~ "50-59",
+        Age >= 60 & Age <= 69 ~ "60-69",
+        Age >= 70 ~ "70+",
         TRUE ~ NA_character_
       ),
       # Calculate Click-Through Rate (CTR)
